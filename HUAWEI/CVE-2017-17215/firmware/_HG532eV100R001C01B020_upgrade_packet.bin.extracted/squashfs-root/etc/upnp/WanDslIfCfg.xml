@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+	<specVersion>
+		<major>1</major>
+		<minor>0</minor>
+	</specVersion>
+	<actionList>
+		<action>
+			<name>GetInfo</name>
+			<argumentList>
+				<argument>
+					<name>NewStatus</name>
+					<direction>out</direction>
+					<relatedStateVariable>Status</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>NewModulationType</name>
+					<direction>out</direction>
+					<relatedStateVariable>ModulationType</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>NewUpstreamCurrRate</name>
+					<direction>out</direction>
+					<relatedStateVariable>UpstreamCurrRate</relatedStateVariable>
+				</argument>
+				<argument>
+					<name>NewDownstreamCurrRate</name>
+					<direction>out</direction>
+					<relatedStateVariable>DownstreamCurrRate</relatedStateVariable>
+				</argument>
+			</argumentList>
+		</action>
+	</actionList>
+	<serviceStateTable>
+		<stateVariable sendEvents="no">
+			<name>Status</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>ModulationType</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>UpstreamCurrRate</name>
+			<dataType>ui4</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="yes">
+			<name>DownstreamCurrRate</name>
+			<dataType>ui4</dataType>
+		</stateVariable>
+	</serviceStateTable>
+</scpd>

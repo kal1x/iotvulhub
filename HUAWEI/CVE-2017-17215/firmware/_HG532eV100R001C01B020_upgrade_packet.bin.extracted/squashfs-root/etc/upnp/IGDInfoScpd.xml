@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <actionList>
+   <action>
+      <name>GetVersion</name>
+      <argumentList>
+          <argument>
+              <name>NewVersion</name>
+              <direction>out</direction>
+              <relatedStateVariable>Version</relatedStateVariable>
+          </argument>
+      </argumentList>
+    </action>
+  </actionList>
+  <serviceStateTable>
+    <stateVariable>
+      <name>Version</name>
+      <dataType>string</dataType>
+    </stateVariable>
+  </serviceStateTable>
+</scpd>

@@ -1,0 +1,7 @@
+#!/bin/sh
+/bin/echo "rcs"
+PATH=/sbin:/bin:/usr/bin:/usr/sbin
+export PATH
+
+echo "RCS DONE"
+

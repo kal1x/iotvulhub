@@ -1,0 +1,76 @@
+#!/bin/sh
+
+mount -t tmpfs none /dev
+
+mknod /dev/initctl p
+
+
+#Create character devices
+mknod /dev/mem c 1 1
+
+mknod /dev/ttyp2 c 3 2
+mknod /dev/ttyp1 c 3 1
+mknod /dev/ttyp0 c 3 0
+mknod /dev/ptyp2 c 2 2
+mknod /dev/ptyp1 c 2 1
+mknod /dev/ptyp0 c 2 0
+mknod /dev/zero c 1 5
+mknod /dev/mtdblock6 b 31 6
+mknod /dev/mtdblock5 b 31 5
+mknod /dev/mtdblock4 b 31 4
+mknod /dev/mtdblock3 b 31 3
+mknod /dev/mtdblock2 b 31 2
+mknod /dev/mtdblock1 b 31 1
+mknod /dev/mtdblock0 b 31 0
+mknod /dev/mtd6 c 90 12
+mknod /dev/mtd5 c 90 10
+mknod /dev/mtd4 c 90 8
+mknod /dev/mtd3 c 90 6
+mknod /dev/mtd2 c 90 4
+mknod /dev/mtd1 c 90 2
+mknod /dev/mtd0 c 90 0
+mknod /dev/ptmx c 5 2
+mknod /dev/ttyS0 c 4 64
+mknod /dev/tty c 5 0
+mknod /dev/tty0 c 4 0
+mknod /dev/tty1 c 4 1
+mknod /dev/tty2 c 4 2
+mknod /dev/tty3 c 4 3
+mknod /dev/tty4 c 4 4
+mknod /dev/ppp c 108 0
+mknod /dev/printer0 c 180 0
+mknod /dev/console c 5 1
+mknod /dev/bhal c 255 0
+mknod /dev/commondrv c 253 0
+mknod /dev/kmem c 1 2
+mknod /dev/port c 1 4
+mknod /dev/null c 1 3
+mknod /dev/ac0 c 240 0
+mknod /dev/acl0 c 230 0
+mknod /dev/urandom c 1 9
+mknod /dev/gpio c 252 0
+mknod /dev/i2cM0 c 218 0
+mknod /dev/I2S c 234 0
+mknod /dev/boardled c 151 0
+mknod /dev/wlchr c 13 0
+mknod /dev/watchdog c 10 130
+#TCSUPPORT__RA_HWNAT START
+mknod /dev/hwnat0 c 220 0
+mknod /dev/acl0 c 230 0
+mknod /dev/ac0 c 240 0
+mknod /dev/mtr0 c 250 0
+#TCSUPPORT__RA_HWNAT END
+mknod /dev/ttyUSB0 c 188 0
+mknod /dev/ttyUSB1 c 188 1
+mknod /dev/ttyUSB2 c 188 2
+mknod /dev/ttyUSB3 c 188 3
+
+# Create block devices
+mknod /dev/ram0 b 1 0
+mknod /dev/ram1 b 1 1
+mknod /dev/ram2 b 1 2
+mknod /dev/ram3 b 1 3
+
+mknod $ROOTFS/dev/adsl0 c 100 0
+mkdir /dev/net
+

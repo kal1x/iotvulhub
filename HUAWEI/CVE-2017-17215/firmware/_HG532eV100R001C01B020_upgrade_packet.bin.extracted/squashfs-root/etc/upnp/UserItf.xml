@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+<specVersion>
+	<major>1</major>
+	<minor>0</minor>
+</specVersion>
+<actionList>
+	<action>
+		<name>GetLoginPassword</name>
+		<argumentList>
+			<argument>
+				<name>NewUserpassword</name>
+				<direction>out</direction>
+				<relatedStateVariable>Userpassword</relatedStateVariable>
+			</argument>
+		</argumentList>
+	</action>
+	<action>
+		<name>SetLoginPassword</name>
+		<argumentList>
+			<argument>
+				<name>NewUserpassword</name>
+				<direction>in</direction>
+				<relatedStateVariable>Userpassword</relatedStateVariable>
+			</argument>
+		</argumentList>
+	</action>
+</actionList>
+<serviceStateTable>
+	<stateVariable sendEvents="no">
+		<name>Userpassword</name>
+		<dataType>string</dataType>
+	</stateVariable>
+</serviceStateTable>
+</scpd>
+

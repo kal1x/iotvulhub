@@ -1,0 +1,19 @@
+#!/bin/sh
+################################################################################
+
+busybox mount -t proc /proc /proc
+#busybox mount -t tmpfs none /var
+#busybox mount -t tmpfs none /tmp
+busybox mount -v -t tmpfs none /var
+busybox mount -v -t tmpfs none /tmp
+busybox mount -t tmpfs none /mnt
+
+mkdir -p /var/dhcp
+mkdir -p /var/dhcp/dhcps 
+mkdir -p /var/dhcp/dhcpc 
+mkdir -p /var/log /var/run /var/fs /var/state/dhcp /var/zebra /var/tmp /var/usb
+
+mkdir -p /var/etc
+mkdir -p /var/cache
+mkdir -p /var/locks
+

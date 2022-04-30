@@ -1,0 +1,71 @@
+# /etc/profile: system-wide .profile file for the Bourne shells
+
+PATH=/bin:/sbin:/usr/bin
+export PATH
+
+swapdev
+startbsp
+
+echo 32  > /proc/sys/kernel/msgmni
+test -e /bin/atserver && atserver &
+test -e /bin/usbdiagd && usbdiagd &
+
+ echo "Loading drivers and kernel modules... "
+ echo > /var/dhcp/dhcps/leases
+ echo > /var/dhcp/dhcps/leasesF
+ ifconfig lo 127.0.0.1 netmask 255.0.0.0 broadcast 127.255.255.255 up
+ 
+mkdir /var/Wireless
+cp /etc/Wireless/RT2860AP/RT2860AP.dat /var/Wireless/RT2860AP.dat
+mknod /var/fuse c 10 229
+chmod a+rw /var/fuse
+test -e /lib/extra/tc3162_dmt.ko && insmod /lib/extra/tc3162_dmt.ko
+test -e /lib/extra/rt5392ap.ko && insmod /lib/extra/rt5392ap.ko
+#add for support chinese charset and ntfs fat ntfs filesystem 
+ test -e /lib/kernel/fs/fat/fat.ko && insmod /lib/kernel/fs/fat/fat.ko
+ test -e /lib/kernel/fs/vfat/vfat.ko && insmod /lib/kernel/fs/vfat/vfat.ko
+ test -e /lib/kernel/fs/ntfs/ntfs.ko && insmod /lib/kernel/fs/ntfs/ntfs.ko
+ test -e /lib/kernel/fs/nls/nls_cp936.ko && insmod /lib/kernel/fs/nls/nls_cp936.ko
+ 
+ 
+ 
+ test -e /lib/kernel/arch/mips/rt2880/lm.ko && insmod /lib/kernel/arch/mips/rt2880/lm.ko
+ test -e /lib/kernel/arch/mips/rt2880/rt_timer.ko && insmod /lib/kernel/arch/mips/rt2880/rt_timer.ko
+ test -e /lib/kernel/drivers/usb/serial/option.ko && insmod /lib/kernel/drivers/usb/serial/option.ko
+ test -e /lib/kernel/fs/fuse/fuse.ko && insmod /lib/kernel/fs/fuse/fuse.ko
+ test -e /lib/extra/dwc_otg.ko && insmod /lib/extra/dwc_otg.ko
+ test -e /lib/extra/ralink_gdma.ko && insmod /lib/extra/ralink_gdma.ko
+ test -e /lib/extra/rt2860v2_ap.ko && insmod /lib/extra/rt2860v2_ap.ko
+
+echo "wan ghs set annex al" > /proc/tc3162/tcci_cmd
+echo "wan dmt db tlb 2" > /proc/tc3162/tcci_cmd
+echo "wan ghs set multi_number 3 3" > /proc/tc3162/tcci_cmd
+echo "wan dmt2 set largeD 2" > /proc/tc3162/tcci_cmd
+echo "wan dmt eoc dyingasp off" > /proc/tc3162/tcci_cmd
+echo "wan dmt2 set lpr off" > /proc/tc3162/tcci_cmd
+echo "wan dmt2 set pmonoff off" > /proc/tc3162/tcci_cmd
+echo "wan dmt2 set olr 2" > /proc/tc3162/tcci_cmd
+
+#TCSUPPORT__RA_HWNAT BEGIN
+ifconfig eth0 up
+test -e /lib/extra/hw_nat.ko && insmod /lib/extra/hw_nat.ko
+#TCSUPPORT__RA_HWNAT END
+
+test -e /lib/extra/brg_shortcut.ko && insmod /lib/extra/brg_shortcut.ko
+
+#ifconfig eth0 0.0.0.0
+#ethcmd eth0 vlanpt enable
+ethcmd eth0 lanchip disable
+
+#mkdir /var/Wireless
+#cp /etc/Wireless/RT2860AP/RT2860AP.dat /var/Wireless/RT2860.dat
+# test -e /lib/extra/rt3090ap.ko && insmod /lib/extra/rt3090ap.ko
+
+ethcmd miiw 4 0 1800
+atmcmdd &
+tcwdog -t 1 /dev/watchdog &
+mic
+
+echo "Done"
+
+

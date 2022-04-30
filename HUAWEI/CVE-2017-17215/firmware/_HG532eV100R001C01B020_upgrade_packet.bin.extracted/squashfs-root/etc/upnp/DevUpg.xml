@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+<actionList>
+<action>
+<name>Upgrade</name>
+<argumentList>
+<argument>
+<name>NewDownloadURL</name>
+<direction>in</direction>
+<relatedStateVariable>DownloadURL</relatedStateVariable>
+</argument>
+<argument>
+<name>NewStatusURL</name>
+<direction>in</direction>
+<relatedStateVariable>StatusURL</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetSoftwareVersion</name>
+<argumentList>
+<argument>
+<name>NewSoftwareVersion</name>
+<direction>out</direction>
+<relatedStateVariable>SoftwareVersion</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+</actionList>
+<serviceStateTable>
+<stateVariable sendEvents="no">
+<name>DownloadURL</name>
+<dataType>string</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>StatusURL</name>
+<dataType>string</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>SoftwareVersion</name>
+<dataType>string</dataType>
+</stateVariable>
+</serviceStateTable>
+</scpd>
