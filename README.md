@@ -93,7 +93,7 @@ docker push {注册用户名}/{镜像名}:{标签名}
 
 - 克隆仓库到本地
 ```bash
-git clone http://git.a101e.lab:20080/kal1/Iot-vulhub.git
+git clone https://github.com/kal1x/iotvulhub.git
 ```
 
 - 使用sock5代理的方法
